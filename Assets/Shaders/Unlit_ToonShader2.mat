@@ -39,7 +39,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BorderWidth: 0.00035
-    - _PeelAmount: 0.172
+    - _PeelAmount: 0
     - _RangeVal: 0.19
     - _RangeVal2: -0.29
     - _ShadowPower1: 0.55

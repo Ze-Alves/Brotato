@@ -16,10 +16,11 @@ public class PlayerMeleeTickle : MonoBehaviour
     [SerializeField] private Transform _boss;
     private Animator _anim;
     private float _timeSinceLastAttack = 0;
-
+    private PlayerMovent _playerMovement;
     private void Awake()
     {
         _anim = GetComponent<Animator>();
+        _playerMovement = GetComponent<PlayerMovent>();
     }
 
     private void Update()
@@ -44,6 +45,7 @@ public class PlayerMeleeTickle : MonoBehaviour
                 ShowFeedback(hit);
             }
         }
+        _playerMovement.MicroAdjustment(transform.forward);
     }
 
     private void ShowFeedback(RaycastHit hit)

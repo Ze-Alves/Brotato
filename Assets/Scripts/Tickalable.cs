@@ -1,25 +1,41 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tickalable : MonoBehaviour
 {
-    [SerializeField] private float _maxTickleHP;
+    [SerializeField] private float MaxTickleHP;
     [SerializeField] private float _tickleStaggerAmount;
     [SerializeField] private float _tickleStaggerTime;
-    private float _currentTickleHP;
+    [SerializeField] private MeshRenderer _meshRenderer;
+    [SerializeField] private Slider _tickleSlider;
+    public float CurrentTickleHP;
     private float _currentTickleStaggerAmount;
 
     private void Awake()
     {
-        _currentTickleHP = _maxTickleHP;
+        CurrentTickleHP = MaxTickleHP;
         _currentTickleStaggerAmount = _tickleStaggerAmount;
     }
 
     public void GetTickled(float tickleAmout)
     {
-        _currentTickleHP -= tickleAmout;
+        CurrentTickleHP -= tickleAmout;
         _currentTickleStaggerAmount += tickleAmout;
-        Debug.Log("Tickled: " + tickleAmout + " | Current Tickle HP: " + _currentTickleHP + " | Current Tickle Stagger Amount: " + _currentTickleStaggerAmount);
+
+        if(CurrentTickleHP <= 0)
+        {
+            CurrentTickleHP = 0;
+        }
+        
+        UpdateShader();
+    }
+
+    private void UpdateShader()
+    {
+        _tickleSlider.value =1- CurrentTickleHP / MaxTickleHP;
+        _meshRenderer.materials[0].SetFloat("_PeelAmount", 1- CurrentTickleHP / MaxTickleHP);
     }
 }

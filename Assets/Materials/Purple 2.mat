@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Purple
-  m_Shader: {fileID: 4800000, guid: 8cc052cfba899d24aa1320bd6285f42a, type: 3}
+  m_Name: Purple 2
+  m_Shader: {fileID: 4800000, guid: f31a33a3efc82e143bef90ee70bfeb3b, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -56,6 +56,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _PeelNoise:
+        m_Texture: {fileID: 2800000, guid: b3bea5c8612682241863f9af70362fbc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PeelTex:
+        m_Texture: {fileID: 2800000, guid: 225d2dea676b304459ceb1a445eeb7f1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BorderWidth: 0.00026
@@ -70,6 +78,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _PeelAmount: 0
     - _RangeVal: 0.05
     - _RangeVal2: 0.05
     - _ShadowPower1: 0.5
@@ -84,4 +93,5 @@ Material:
     - _BorderColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 0.5351658, g: 0, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _PeelColor: {r: 0.8294266, g: 0.8584906, b: 0.5304824, a: 1}
   m_BuildTextureStacks: []

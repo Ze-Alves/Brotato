@@ -14,6 +14,10 @@ public class PlayerMovent : MonoBehaviour
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private LayerMask _whatIsGround;
 
+    [Header("MicroAdjustment")]
+    [SerializeField] private float _microAdjustmentDistance;
+    [SerializeField] private float _microAdjustmentTime;
+
     private Rigidbody _rb;
     private Vector3 moveDirection;
     private Dash _dash;
@@ -84,6 +88,11 @@ public class PlayerMovent : MonoBehaviour
             _rb.MovePosition(transform.position + moveDirection * _speed * Time.deltaTime);
         }
 
+    }
+
+    public void MicroAdjustment(Vector3 direction)
+    {
+        _rb.DOMove(transform.position + direction * _microAdjustmentDistance, _microAdjustmentTime);
     }
 
     private void OnDrawGizmos()

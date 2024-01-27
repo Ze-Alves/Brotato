@@ -16,11 +16,13 @@ public class PotatoBabiesActivate : MonoBehaviour
     [SerializeField] private float _aliveTime = 1;
     private Rigidbody _rigidbody;
     private Transform _tickleTarget;
+    private Tickalable _tickalableTarget;
     public BabyPotatoState _state = BabyPotatoState.Idle;
     private float _timeSinceLanded = 0;
     private float _timeSinceTickle = 0;
     private float _timeSinceLastTickle = 0;
     bool _sleeping = false;
+    bool _landed = false;   
 
     [Header("Reference")]
     [SerializeField] private GameObject _sleepParticles;
@@ -42,10 +44,12 @@ public class PotatoBabiesActivate : MonoBehaviour
     public void SetTickleTarget(Transform target)
     {
         _tickleTarget = target;
+        _tickalableTarget = target.GetComponent<Tickalable>();
     }
 
     private void Update()
     {
+        if (!_landed) return;
 
         _timeSinceLanded += Time.deltaTime;
 
@@ -100,6 +104,7 @@ public class PotatoBabiesActivate : MonoBehaviour
         transform.GetChild(0).DORotate(new Vector3(90, 0, 00), 1);
         _sleepParticles.SetActive(true);
         _sleeping = true;
+        GetComponent<Animator>().enabled = false;
     }
 
     private void Tickle()
@@ -111,7 +116,7 @@ public class PotatoBabiesActivate : MonoBehaviour
         }
         if (_timeSinceLastTickle < _tickleInterval) return;
 
-        Debug.Log("Tickle");
+        _tickalableTarget.GetTickled(_tickleValuePerSecond);
         var tickleVFX = Instantiate(_tickleVFX, transform.position, Quaternion.identity);
         tickleVFX.transform.localScale *= _tickleScale;
         _timeSinceLastTickle = 0;
@@ -128,6 +133,7 @@ public class PotatoBabiesActivate : MonoBehaviour
     {
         if (_state == BabyPotatoState.Idle && collision.gameObject.layer == LayerMask.NameToLayer("Ground")) 
         { 
+            _landed = true;
             _state = BabyPotatoState.Activating;
             Instantiate(_potatoLandVFX, transform.position, Quaternion.LookRotation(Vector3.up));
 
@@ -139,7 +145,7 @@ public class PotatoBabiesActivate : MonoBehaviour
         var otherPotato = collision.collider.GetComponent<PotatoBabiesActivate>();
         if (otherPotato != null)
         {
-            otherPotato.GetComponent<Rigidbody>().AddForce(100 * Vector3.right);
+            otherPotato.GetComponent<Rigidbody>().AddForce(100 * transform.up);
         }
     }
 
