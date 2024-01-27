@@ -8,6 +8,8 @@ public class carrot : MonoBehaviour
     int attackPhase = 0;
     Transform target;
     Vector3 Dire;
+
+    public int Damage;
     void Start()
     {
         
@@ -49,13 +51,9 @@ public class carrot : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        ;
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("SSUS");
         if (attackPhase == 2)
             attackPhase = 0;
     }
+
+ 
 }

@@ -9,6 +9,7 @@ public class CornBullet : MonoBehaviour
     public float Lifetime;
     float LifetimeTrack;
     public Corn daddyCorn;
+    public int Damage;
     void Start()
     {
         

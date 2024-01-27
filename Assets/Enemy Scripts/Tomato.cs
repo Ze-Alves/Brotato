@@ -14,6 +14,9 @@ public class Tomato : MonoBehaviour
     public float OffsetRange;
 
     bool Flying=false;
+
+    public int Damage;
+
     void Start()
     {
         
@@ -30,7 +33,7 @@ public class Tomato : MonoBehaviour
             Activate = false;
 
             Vector3 targetPos = target.position;
-            targetPos.y = 0;
+            targetPos.y = 0.1f;
 
             Vector3 targetOffset = new Vector3(Random.Range(-OffsetRange, OffsetRange),0, Random.Range(-OffsetRange, OffsetRange));
             targetPos+=targetOffset;
@@ -48,20 +51,12 @@ public class Tomato : MonoBehaviour
             StartCoroutine(AttackFlying());
         }
 
-
         
         if (Flying)
         {
             Current_speed.y -= Falling_Speed * Time.deltaTime;
             transform.position += Current_speed * Time.deltaTime;
-
-
         }
-
-
-
-
-
 
     }
 
@@ -76,7 +71,6 @@ public class Tomato : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
         Flying = false;
         GetComponent<Rigidbody>().WakeUp();
     }
