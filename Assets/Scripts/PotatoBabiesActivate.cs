@@ -16,7 +16,7 @@ public class PotatoBabiesActivate : MonoBehaviour
     [SerializeField] private float _aliveTime = 1;
     private Rigidbody _rigidbody;
     private Transform _tickleTarget;
-    private BabyPotatoState _state = BabyPotatoState.Idle;
+    public BabyPotatoState _state = BabyPotatoState.Idle;
     private float _timeSinceLanded = 0;
     private float _timeSinceTickle = 0;
     private float _timeSinceLastTickle = 0;
@@ -24,6 +24,9 @@ public class PotatoBabiesActivate : MonoBehaviour
 
     [Header("Reference")]
     [SerializeField] private GameObject _sleepParticles;
+    [SerializeField] private GameObject _potatoLandVFX;
+    [SerializeField] private GameObject _tickleVFX;
+    [SerializeField] private float _tickleScale = 1;
 
     private void Awake()
     {
@@ -33,6 +36,7 @@ public class PotatoBabiesActivate : MonoBehaviour
     public void AddForce(float force)
     {
         _rigidbody.AddForce(transform.forward * force, ForceMode.Impulse);
+        _rigidbody.AddTorque(transform.right * force*10, ForceMode.Impulse);
     }
 
     public void SetTickleTarget(Transform target)
@@ -108,6 +112,8 @@ public class PotatoBabiesActivate : MonoBehaviour
         if (_timeSinceLastTickle < _tickleInterval) return;
 
         Debug.Log("Tickle");
+        var tickleVFX = Instantiate(_tickleVFX, transform.position, Quaternion.identity);
+        tickleVFX.transform.localScale *= _tickleScale;
         _timeSinceLastTickle = 0;
         
     }
@@ -120,7 +126,21 @@ public class PotatoBabiesActivate : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_state == BabyPotatoState.Idle) _state = BabyPotatoState.Activating;
+        if (_state == BabyPotatoState.Idle && collision.gameObject.layer == LayerMask.NameToLayer("Ground")) 
+        { 
+            _state = BabyPotatoState.Activating;
+            Instantiate(_potatoLandVFX, transform.position, Quaternion.LookRotation(Vector3.up));
+
+            _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+            transform.DORotate(new Vector3(0, 0, 0), .3f)
+                .OnComplete(() => transform.DOLookAt(_tickleTarget.position,.4f));
+        }
+
+        var otherPotato = collision.collider.GetComponent<PotatoBabiesActivate>();
+        if (otherPotato != null)
+        {
+            otherPotato.GetComponent<Rigidbody>().AddForce(100 * Vector3.right);
+        }
     }
 
     #region Helper Methods

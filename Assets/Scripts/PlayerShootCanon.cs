@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerShootCanon : MonoBehaviour
@@ -8,6 +9,8 @@ public class PlayerShootCanon : MonoBehaviour
     [SerializeField] private Transform _canonFirepoint;
     [SerializeField] private GameObject _potatoBabyPrefab;
     [SerializeField] private float _potatoBabyForce;
+    [SerializeField] private TextMeshProUGUI _ammoText;
+    [SerializeField] private GameObject _shootFX;
 
     [Header("Baby Potato Things")]
     [SerializeField] private Transform _tickleTarget;
@@ -21,18 +24,23 @@ public class PlayerShootCanon : MonoBehaviour
     private void Awake()
     {
         _currentAmmo = _maxAmmo;
+        UpdateAmmoCount();
 
     }
 
     private void Update()
     {
         _timeSinceLastShot += Time.deltaTime;
-        if (Input.GetMouseButton(0) && _timeSinceLastShot >= _delayBetweenShots && _currentAmmo > 0)
+        if (Input.GetMouseButton(1) && _timeSinceLastShot >= _delayBetweenShots && _currentAmmo > 0)
         {
             Debug.Log("Shoot");
 
             _timeSinceLastShot = 0;
             _currentAmmo--;
+            Instantiate(_shootFX, _canonFirepoint.position, _canonFirepoint.rotation);
+            CameraShakeController.Instance.DoShake(2f,2f,.2f);
+
+            UpdateAmmoCount();
 
             var potatoBaby = Instantiate(_potatoBabyPrefab, _canonFirepoint.position, _canonFirepoint.rotation);
             var potatoBabyScript = potatoBaby.GetComponent<PotatoBabiesActivate>();
@@ -40,5 +48,22 @@ public class PlayerShootCanon : MonoBehaviour
             potatoBabyScript.AddForce(_potatoBabyForce);
             potatoBabyScript.SetTickleTarget(_tickleTarget);
         }
+    }
+
+    public void AddPotato()
+    {
+        _currentAmmo++;
+        if (_currentAmmo > _maxAmmo)
+        {
+            _currentAmmo = _maxAmmo;
+        }
+        UpdateAmmoCount();
+    }
+
+    private void UpdateAmmoCount()
+    {
+        if (!_ammoText) return;
+
+        _ammoText.text = _currentAmmo.ToString();
     }
 }
