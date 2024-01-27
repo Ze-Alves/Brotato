@@ -67,7 +67,7 @@ public class PotatoBabiesActivate : MonoBehaviour
         float distanceToTarget = CheckDistanceToTarget();
         if (distanceToTarget <= _maxTickleDistance)
         {
-            _rigidbody.Sleep();
+            //_rigidbody.Sleep();
             _state = BabyPotatoState.Tickle;
         }
         else _state = BabyPotatoState.Chasing;

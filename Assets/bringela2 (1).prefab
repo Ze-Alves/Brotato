@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1c3eadc14a48fb04c8e9093409f450cf, type: 2}
+  - {fileID: 2100000, guid: bd9b7e6aba48e5a4c862809182aad875, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -760,8 +760,8 @@ GameObject:
   - component: {fileID: 8064093912715277220}
   - component: {fileID: 7522088681435684329}
   - component: {fileID: 4761180072322279842}
-  - component: {fileID: 7251562982469593372}
-  - component: {fileID: 7251562982469593373}
+  - component: {fileID: 472915723}
+  - component: {fileID: 472915717}
   m_Layer: 0
   m_Name: bringela2 (1)
   m_TagString: Untagged
@@ -778,7 +778,7 @@ Transform:
   m_GameObject: {fileID: 7251562982469593374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.265152, y: 0, z: -49.211956}
-  m_LocalScale: {x: 30, y: 30, z: 30}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6596524439728389593}
@@ -895,23 +895,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _slamRadius: 10
+  _slamForce: 3000
   damage: 0
   timer: 0
---- !u!135 &7251562982469593372
+--- !u!135 &472915723
 SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7251562982469593374}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.49
-  m_Center: {x: 0, y: 0.47, z: 0}
---- !u!64 &7251562982469593373
-MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -920,10 +909,27 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Radius: 0.97666013
+  m_Center: {x: -0.0000000030701008, y: 0.90442103, z: 0.06108417}
+--- !u!114 &472915717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7251562982469593374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb8617a2e8ba701459f208ae7d1fcf33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxTickleHP: 100
+  _tickleStaggerAmount: 100
+  _tickleStaggerTime: 2
+  _meshRenderer: {fileID: 4597998482222641461}
+  _tickleSlider: {fileID: 0}
+  CurrentTickleHP: 0
 --- !u!1 &7764497066935155435
 GameObject:
   m_ObjectHideFlags: 0

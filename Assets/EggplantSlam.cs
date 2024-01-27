@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class EggplantSlam : MonoBehaviour
 {
 
     public AnimationCurve AscendingCurve,DecendingCurve;
+    [SerializeField] float _slamRadius = 10f;
+    [SerializeField] float _slamForce = 100f;
 
     int SlamState;
 
@@ -33,6 +36,7 @@ public class EggplantSlam : MonoBehaviour
             if (transform.position.y < 0)
             {
                 SlamState = 0;
+                PushEnemies();
                 transform.position -= Vector3.up * transform.position.y;
                 timer = 0;
             }
@@ -46,18 +50,19 @@ public class EggplantSlam : MonoBehaviour
         SlamState = 1;
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    private void PushEnemies()
     {
-        Debug.Log("SLAM");
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _slamRadius);
 
-        if (other.gameObject.layer != 6 && SlamState==2)
+        foreach (Collider collider in colliders)
         {
-
-            Vector3 dir = other.transform.position - transform.position;
-            dir.y = 20;
-            dir.Normalize();
-            other.attachedRigidbody.AddForce(dir * 200, ForceMode.Impulse);     
+            var rb = collider.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Debug.Log("Pushing: " + collider.name);
+                rb.AddForce(Vector3.up * _slamForce/10, ForceMode.Impulse);
+                rb.AddExplosionForce(_slamForce, transform.position, _slamRadius);
+            }
         }
     }
 }
