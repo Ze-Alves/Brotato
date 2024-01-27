@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Corn : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
 
     public List<CornBullet> activeBullets;
     public List<CornBullet> inactiveBullets;
@@ -25,16 +25,22 @@ public class Corn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(active)
         transform.LookAt(target);
 
-
-        if (active)
-        {
-            StartCoroutine(ShootCorn());
-            active = false;
-        }
     }
 
+
+    public void Attack(Transform tar)
+    {
+        target = tar;
+        active = true;
+        transform.LookAt(target);
+        StartCoroutine(ShootCorn());
+
+    }
+
+   
     IEnumerator ShootCorn()
     {
         int remaniningShots = Rounds;

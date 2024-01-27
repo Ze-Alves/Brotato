@@ -8,8 +8,7 @@ public class Tomato : MonoBehaviour
     public float Falling_Speed;
     public bool Activate=false;
     Vector3 Current_speed=Vector3.zero;
-    float timer=0;
-    public Transform target;
+    Transform target;
     public GameObject area;
 
     public float OffsetRange;
@@ -29,7 +28,6 @@ public class Tomato : MonoBehaviour
             speed.y =Falling_Speed*TimeinAir/2;
             Current_speed = speed;
             Activate = false;
-            timer = 0;
 
             Vector3 targetPos = target.position;
             targetPos.y = 0;
@@ -50,7 +48,6 @@ public class Tomato : MonoBehaviour
             StartCoroutine(AttackFlying());
         }
 
-        timer += Time.deltaTime;
 
         
         if (Flying)
@@ -68,9 +65,25 @@ public class Tomato : MonoBehaviour
 
     }
 
+
+    public void Attack(Transform tar)
+    {
+        target= tar;
+
+        Activate = true;
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+        Flying = false;
+        GetComponent<Rigidbody>().WakeUp();
+    }
+
     IEnumerator AttackFlying()
     {
-        yield return new WaitForSeconds(TimeinAir);
+        yield return new WaitForSeconds(TimeinAir-0.1f);
 
         Flying = false;
         GetComponent<Rigidbody>().WakeUp();
