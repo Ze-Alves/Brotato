@@ -1,10 +1,12 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using System;
 
 [RequireComponent(typeof(Rigidbody))]
-public class MovePlayer : MonoBehaviour
+[RequireComponent(typeof(Dash))]
+public class PlayerMovent : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _airSpeed;
@@ -14,10 +16,12 @@ public class MovePlayer : MonoBehaviour
 
     private Rigidbody _rb;
     private Vector3 moveDirection;
+    private Dash _dash;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _dash = GetComponent<Dash>();
     }
     private void Start()
     {
@@ -33,6 +37,13 @@ public class MovePlayer : MonoBehaviour
 
         if (moveDirection.magnitude > 0.1)
         {
+            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z)
+               * Mathf.Rad2Deg
+               + Camera.main.transform.eulerAngles.y;
+
+            moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            moveDirection.Normalize();
+
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
         }
@@ -41,6 +52,24 @@ public class MovePlayer : MonoBehaviour
         {
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _dash.DoDash(this);
+        }
+    }
+
+    public  void ProcessRotation(float rotation)
+    {
+        //Maybe we can use DOTween to smooth the rotation?
+        float angle = Mathf.SmoothDampAngle(
+            transform.eulerAngles.y,
+            rotation,
+            ref _rotationSpeed,
+            _rotationSpeed);
+
+        // Rotate the character controller
+        transform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 
     private bool CheckGrounded()
