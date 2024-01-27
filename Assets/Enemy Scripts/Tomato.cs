@@ -9,7 +9,9 @@ public class Tomato : MonoBehaviour
     public bool Activate=false;
     Vector3 Current_speed=Vector3.zero;
     Transform target;
-    public GameObject area;
+    public GameObject areaExplosion;
+
+    public int area;
 
     public float OffsetRange;
 
@@ -44,7 +46,7 @@ public class Tomato : MonoBehaviour
 
             Current_speed += targetDir.normalized * (targetDir.magnitude/2);
 
-            Instantiate(area, targetPos, Quaternion.identity);
+            Instantiate(areaExplosion, targetPos, Quaternion.identity);
 
             Flying = true;
             GetComponent<Rigidbody>().Sleep();
@@ -71,8 +73,25 @@ public class Tomato : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Flying = false;
+        if (Flying)
+        {
+            Collider[] coliders = Physics.OverlapSphere(transform.position, area);
+
+            foreach (var colider in coliders)
+            {
+                if (colider.gameObject.layer == 7)
+                {
+                    Debug.Log("Damage");
+                    colider.gameObject.GetComponent<PlayerHP>().HP -= Damage;
+                }
+            }
+
+            Flying = false;
+        }
         GetComponent<Rigidbody>().WakeUp();
+
+        
+
     }
 
     IEnumerator AttackFlying()

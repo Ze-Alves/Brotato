@@ -35,6 +35,7 @@ public class CornBullet : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.GetMask("Player"))
         {
             Debug.Log("CornHit");
+            collision.gameObject.GetComponent<PlayerHP>().HP -= Damage;
         }
 
         Dead();

@@ -20,6 +20,7 @@ public class carrot : MonoBehaviour
     {
         if (attackPhase == 1)
         {
+
             transform.position += Vector3.up * .02f;
             if (transform.position.y > 30)
                 StartCoroutine(AttackMotion());
@@ -28,6 +29,8 @@ public class carrot : MonoBehaviour
         {
             transform.position += Dire * .05f;
         }
+        Debug.Log(GetComponent<Rigidbody>().IsSleeping());
+
     }
 
     public void Attack(Transform tar)
@@ -35,8 +38,10 @@ public class carrot : MonoBehaviour
         target = tar;
         attackPhase = 1;
         transform.rotation = Quaternion.identity;
+        GetComponent<Rigidbody>().isKinematic=true;
+
     }
-    
+
     public IEnumerator AttackMotion()
     {
         transform.LookAt(target, Vector3.up);
@@ -51,14 +56,20 @@ public class carrot : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.GetMask("Player"))
+        if (collision.gameObject.layer == 7)
         {
             Debug.Log("CarrotHit");
+            GetComponent<Rigidbody>().isKinematic = false;
+            collision.gameObject.GetComponent<PlayerHP>().HP -= Damage;
+
         }
 
-        if (attackPhase == 2)
-            attackPhase = 0;
-    }
 
- 
-}
+        if (attackPhase == 2)
+        {
+            attackPhase = 0;
+        }
+        }
+
+
+    }
