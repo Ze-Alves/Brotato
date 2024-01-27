@@ -9,13 +9,21 @@ public class Dash : MonoBehaviour
     [SerializeField] private float _dashDistance;
     [SerializeField] private float _dashDuration;
     [SerializeField] private float _dashCooldown;
+
+    [Header("Animation")]
+    [SerializeField] private float _height;
+    [SerializeField] private AudioClip _dashSFX;
+
     private Rigidbody _rb;
     private float _timeSinceLastDash = 0;
+    private IndividualAudioPlayer _audioPlayer;
 
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _timeSinceLastDash = _dashCooldown;
+        _audioPlayer = GetComponent<IndividualAudioPlayer>();
     }
 
     private void Update()
@@ -28,6 +36,7 @@ public class Dash : MonoBehaviour
         Debug.Log("Dash");
         disableMe.enabled = false;
 
+        _audioPlayer.PlayAudio(_dashSFX, 0.5f);
         transform.GetComponent<Animator>().SetTrigger("Dash");
         _timeSinceLastDash = 0;
         _rb.DOMove(transform.position + transform.forward * _dashDistance, _dashDuration)
