@@ -11,6 +11,8 @@ public class EggPlant : MonoBehaviour
     public bool activate=false;
     public int[] AttacksProb=new int[3];
     public int TimeAttack;
+
+   
     void Start()
     {
         
@@ -24,6 +26,9 @@ public class EggPlant : MonoBehaviour
             StartCoroutine(ChooseAttack());
             activate = false;
         }
+
+      
+
     }
 
 
@@ -46,11 +51,14 @@ public class EggPlant : MonoBehaviour
                     tom.Attack(target);
                 }
             }
-            else
+            else if(r<AttacksProb[2])
             {
                 r = Random.Range(0, Corns.Count - 1);
 
                 Corns[r].Attack(target);
+            }
+            else {
+                GetComponentInChildren<EggplantSlam>().Slam();
             }
 
             yield return new WaitForSeconds(TimeAttack);
@@ -58,4 +66,8 @@ public class EggPlant : MonoBehaviour
         }
         yield return null;
     }
+
+
+
+    
 }
