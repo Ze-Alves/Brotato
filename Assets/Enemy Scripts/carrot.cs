@@ -51,6 +51,11 @@ public class carrot : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.layer == LayerMask.GetMask("Player"))
+        {
+            Debug.Log("CarrotHit");
+        }
+
         if (attackPhase == 2)
             attackPhase = 0;
     }

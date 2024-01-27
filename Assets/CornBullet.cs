@@ -32,6 +32,11 @@ public class CornBullet : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
 
+        if (collision.gameObject.layer == LayerMask.GetMask("Player"))
+        {
+            Debug.Log("CornHit");
+        }
+
         Dead();
 
     }
