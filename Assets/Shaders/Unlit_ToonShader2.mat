@@ -20,18 +20,32 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 225d2dea676b304459ceb1a445eeb7f1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainText:
+        m_Texture: {fileID: 2800000, guid: 6fb8e124ddcadb44baa9b300a93a64bd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PeelNoise:
+        m_Texture: {fileID: 2800000, guid: 9426cf5f4f31caa45bc440d53198ada9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PeelTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BorderWidth: 0.005
-    - _RangeVal: 0.05
-    - _RangeVal2: 0.05
-    - _ShadowPower1: 0.5
-    - _ShadowPower2: 0.5
+    - _BorderWidth: 0.00035
+    - _PeelAmount: 0.172
+    - _RangeVal: 0.19
+    - _RangeVal2: -0.29
+    - _ShadowPower1: 0.55
+    - _ShadowPower2: 0.171
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BorderColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.7830189, g: 0.51333135, b: 0.12853324, a: 1}
+    - _BorderColor: {r: 0, g: 0, b: 0, a: 1}
+    - _PeelColor: {r: 0.9339623, g: 0.74438375, b: 0.24142039, a: 1}
   m_BuildTextureStacks: []

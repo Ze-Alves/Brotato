@@ -61,6 +61,7 @@ Shader "Unlit/ToonShader2"
 
         Pass
         {
+        
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -117,7 +118,7 @@ Shader "Unlit/ToonShader2"
 
                 col *= tex2D(_MainTex, i.uv);
 
-                if(tex2D(_PeelNoise, i.uv).r<=(_PeelAmount+.5f)*_PeelAmount/2)
+                if(tex2D(_PeelNoise, i.uv).r<=_PeelAmount)
                 col = tex2D(_PeelTex, i.uv)*_PeelColor;
 
                 if(AngleLight<_RangeVal )
