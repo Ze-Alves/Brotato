@@ -9,6 +9,7 @@ public class CornBullet : MonoBehaviour
     public float Lifetime;
     float LifetimeTrack;
     public Corn daddyCorn;
+    public int Damage;
     void Start()
     {
         
@@ -30,6 +31,12 @@ public class CornBullet : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+
+        if (collision.gameObject.layer == LayerMask.GetMask("Player"))
+        {
+            Debug.Log("CornHit");
+            collision.gameObject.GetComponent<PlayerHP>().HP -= Damage;
+        }
 
         Dead();
 

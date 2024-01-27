@@ -57,7 +57,6 @@ public class Corn : MonoBehaviour
             remaniningShots--;
             yield return new WaitForSeconds(1);
         }
-
         yield return null;
     }
 

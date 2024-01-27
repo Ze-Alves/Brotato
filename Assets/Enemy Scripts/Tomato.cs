@@ -9,11 +9,16 @@ public class Tomato : MonoBehaviour
     public bool Activate=false;
     Vector3 Current_speed=Vector3.zero;
     Transform target;
-    public GameObject area;
+    public GameObject areaExplosion;
+
+    public int area;
 
     public float OffsetRange;
 
     bool Flying=false;
+
+    public int Damage;
+
     void Start()
     {
         
@@ -30,7 +35,7 @@ public class Tomato : MonoBehaviour
             Activate = false;
 
             Vector3 targetPos = target.position;
-            targetPos.y = 0;
+            targetPos.y = 0.1f;
 
             Vector3 targetOffset = new Vector3(Random.Range(-OffsetRange, OffsetRange),0, Random.Range(-OffsetRange, OffsetRange));
             targetPos+=targetOffset;
@@ -41,27 +46,19 @@ public class Tomato : MonoBehaviour
 
             Current_speed += targetDir.normalized * (targetDir.magnitude/2);
 
-            Instantiate(area, targetPos, Quaternion.identity);
+            Instantiate(areaExplosion, targetPos, Quaternion.identity);
 
             Flying = true;
             GetComponent<Rigidbody>().Sleep();
             StartCoroutine(AttackFlying());
         }
 
-
         
         if (Flying)
         {
             Current_speed.y -= Falling_Speed * Time.deltaTime;
             transform.position += Current_speed * Time.deltaTime;
-
-
         }
-
-
-
-
-
 
     }
 
@@ -76,9 +73,25 @@ public class Tomato : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
-        Flying = false;
+        if (Flying)
+        {
+            Collider[] coliders = Physics.OverlapSphere(transform.position, area);
+
+            foreach (var colider in coliders)
+            {
+                if (colider.gameObject.layer == 7)
+                {
+                    Debug.Log("Damage");
+                    colider.gameObject.GetComponent<PlayerHP>().HP -= Damage;
+                }
+            }
+
+            Flying = false;
+        }
         GetComponent<Rigidbody>().WakeUp();
+
+        
+
     }
 
     IEnumerator AttackFlying()
