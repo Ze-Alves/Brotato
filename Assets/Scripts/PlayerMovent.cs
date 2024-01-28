@@ -22,11 +22,13 @@ public class PlayerMovent : MonoBehaviour
     private Vector3 moveDirection;
     private Dash _dash;
     public bool DisableMovement = false;
+    private Animator _anim;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _dash = GetComponent<Dash>();
+        _anim = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -67,6 +69,8 @@ public class PlayerMovent : MonoBehaviour
         {
             _dash.DoDash(this);
         }
+
+        _anim.SetFloat("MovMagnitude", moveDirection.magnitude);
     }
 
     public  void ProcessRotation(float rotation)

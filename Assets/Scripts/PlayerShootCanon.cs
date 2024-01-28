@@ -11,6 +11,7 @@ public class PlayerShootCanon : MonoBehaviour
     [SerializeField] private float _potatoBabyForce;
     [SerializeField] private TextMeshProUGUI _ammoText;
     [SerializeField] private GameObject _shootFX;
+    [SerializeField] private Animator _canonAnimator;
 
     [Header("Baby Potato Things")]
     [SerializeField] private Transform _tickleTarget;
@@ -39,6 +40,7 @@ public class PlayerShootCanon : MonoBehaviour
             _currentAmmo--;
             Instantiate(_shootFX, _canonFirepoint.position, _canonFirepoint.rotation);
             CameraShakeController.Instance.DoShake(2f,2f,.2f);
+            _canonAnimator.SetTrigger("CanonShoot");
 
             UpdateAmmoCount();
 
