@@ -10,7 +10,7 @@ public class NPCRandomMovement : MonoBehaviour
     private float _timeSinceLastDirectionChange = 0f;
     private Rigidbody _rigidbody;
     private Vector3 _currentTargetLocation;
-
+    public float _RangeOffset;
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -35,7 +35,8 @@ public class NPCRandomMovement : MonoBehaviour
 
     private void MoveTowardsTargetLocation()
     {
-        Vector3 direction = (_currentTargetLocation - transform.position).normalized;
+        Vector3 Offset = new Vector3(UnityEngine.Random.Range(-_RangeOffset, _RangeOffset), -1, (UnityEngine.Random.Range(-_RangeOffset, _RangeOffset)));
+        Vector3 direction = (_currentTargetLocation +Offset - transform.position).normalized;
         _rigidbody.velocity = direction * _speed;
     }
 }
