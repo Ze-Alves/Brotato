@@ -14,6 +14,10 @@ public class Corn : MonoBehaviour
     public float FireRate;
     public int Rounds;
     public float offsetRange;
+
+    int attackPhase;
+
+    public int HeightFloat;
     void Start()
     {
        foreach(CornBullet bullet in inactiveBullets)
@@ -25,8 +29,23 @@ public class Corn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(active)
-        transform.LookAt(target);
+        if (attackPhase == 1)
+        {
+            transform.position += Vector3.up * .02f;
+            if (transform.position.y > HeightFloat)
+            {
+                active = true;
+                transform.LookAt(target);
+                StartCoroutine(ShootCorn());
+                attackPhase = 2;
+            }
+        }
+        if (active)
+        {
+            Debug.Log("Roda");
+            transform.LookAt(target);
+            transform.rotation = Quaternion.LookRotation(-transform.up, transform.forward);
+        }
 
     }
 
@@ -34,10 +53,10 @@ public class Corn : MonoBehaviour
     public void Attack(Transform tar)
     {
         target = tar;
-        active = true;
-        transform.LookAt(target);
-        StartCoroutine(ShootCorn());
+        attackPhase = 1;
 
+        GetComponent<Rigidbody>().isKinematic = true;
+        Debug.Log("RAU");
     }
 
    
@@ -46,17 +65,22 @@ public class Corn : MonoBehaviour
         int remaniningShots = Rounds;
         while (remaniningShots > 0)
         {
-            inactiveBullets[0].transform.position = transform.position;
+            yield return new WaitForSeconds(1);
+            inactiveBullets[0].transform.position = transform.position+ transform.up*1.1f;
             inactiveBullets[0].gameObject.SetActive(true);
             Vector3 offset = new Vector3(Random.Range(-.1f, .1f), Random.Range(-.1f, .1f), Random.Range(-.1f, .1f));
             
-            inactiveBullets[0].Direction = (transform.forward+offset*offsetRange).normalized;
+            inactiveBullets[0].Direction = (transform.up+offset*offsetRange).normalized;
             activeBullets.Add(inactiveBullets[0]);
             inactiveBullets.Remove(inactiveBullets[0]);
 
             remaniningShots--;
-            yield return new WaitForSeconds(1);
+            
         }
+        active = false;
+        attackPhase = 0;
+        transform.rotation = Quaternion.identity;
+        GetComponent<Rigidbody>().isKinematic = false;
         yield return null;
     }
 

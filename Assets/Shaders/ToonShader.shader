@@ -8,7 +8,7 @@ Shader "Unlit/ToonShader"
         _RangeVal2 ("ShadowRange2", Range(-1, 1)) = 0.05
         _ShadowPower2("ShadowStrenght2", Range(0., 1)) = 0.5
         _BorderColor ("BorderColor", Color) = (1,1,1,1)
-        _BorderWidth ("BorderWidth", Range(0., .01)) = 0.005
+        _BorderWidth ("BorderWidth", Range(0., .02)) = 0.005
     }
     SubShader
     {
