@@ -58,7 +58,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BorderWidth: 0.01
+    - _BorderWidth: 0.0114
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -70,10 +70,10 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RangeVal: 0.56
-    - _RangeVal2: -0.26
-    - _ShadowPower1: 0.588
-    - _ShadowPower2: 0.276
+    - _RangeVal: -0.64
+    - _RangeVal2: -0.79
+    - _ShadowPower1: 0.21
+    - _ShadowPower2: 0.474
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
