@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +10,7 @@ public class NPCRandomMovement : MonoBehaviour
     private float _timeSinceLastDirectionChange = 0f;
     private Rigidbody _rigidbody;
     private Vector3 _currentTargetLocation;
+    public float _RandomOffset;
 
     private void Awake()
     {
@@ -35,7 +36,10 @@ public class NPCRandomMovement : MonoBehaviour
 
     private void MoveTowardsTargetLocation()
     {
-        Vector3 direction = (_currentTargetLocation - transform.position).normalized;
+        Vector3 RandomOffset = new Vector3(Random.Range(-_RandomOffset, _RandomOffset), 0,Random.Range(-_RandomOffset, _RandomOffset));
+        Vector3 direction = (_currentTargetLocation+RandomOffset  - transform.position).normalized;
+        direction.y = -.1f;
+        direction.Normalize();
         _rigidbody.velocity = direction * _speed;
     }
 }
