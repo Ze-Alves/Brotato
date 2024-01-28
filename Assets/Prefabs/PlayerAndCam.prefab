@@ -71,8 +71,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504815026340784122}
-  m_LocalRotation: {x: -0.43692845, y: -0.000000015543602, z: -0.0000000075502715, w: 0.8994963}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.43692845, y: 0.000000043339387, z: 0.000000021052019, w: 0.8994963}
+  m_LocalPosition: {x: 0, y: -0.0000009536743, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 7.886569, z: -14.36007}
+  m_FollowOffset: {x: 0, y: 10, z: -15}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 7.886569, z: -14.36007}
+  m_FollowOffset: {x: 0, y: 10, z: -15}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 7.886569, z: -14.36007}
+  m_FollowOffset: {x: 0, y: 10, z: -15}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -736,8 +736,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504815027452237888}
-  m_LocalRotation: {x: -0.46251172, y: -4.0106778e-29, z: -2.4679068e-30, w: 0.88661325}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.4625117, y: 0.000000026423129, z: 0.000000013783921, w: 0.8866132}
+  m_LocalPosition: {x: 0, y: -0.0000009536743, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -814,8 +814,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504815027688856807}
-  m_LocalRotation: {x: 0.1386031, y: -0, z: -0, w: 0.99034804}
-  m_LocalPosition: {x: 0, y: -4.9999995, z: 3}
+  m_LocalRotation: {x: -0.5141132, y: -5.0430833e-16, z: -9.581331e-16, w: 0.85772234}
+  m_LocalPosition: {x: 0, y: -6.3312635, z: 3.3417597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -918,6 +918,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7913144808833238028, guid: a1896e4591edace4986c4f017c3e2122, type: 3}
+      propertyPath: _canonAnimator
+      value: 
+      objectReference: {fileID: 1003447256}
+    - target: {fileID: 7913144808833238028, guid: a1896e4591edace4986c4f017c3e2122, type: 3}
       propertyPath: _potatoBabyForce
       value: 300
       objectReference: {fileID: 0}
@@ -983,10 +987,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8954292288008451806, guid: a1896e4591edace4986c4f017c3e2122, type: 3}
       propertyPath: _microAdjustmentOnAttack
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1896e4591edace4986c4f017c3e2122, type: 3}
+--- !u!1 &982103017687301803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3685475134643656918, guid: a1896e4591edace4986c4f017c3e2122, type: 3}
+  m_PrefabInstance: {fileID: 4504815027868362365}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1003447256
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982103017687301803}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cab16fa09de5edb4080f52d0ced959b8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &4695916369342264125 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9200693959573706048, guid: a1896e4591edace4986c4f017c3e2122, type: 3}
