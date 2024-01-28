@@ -71,7 +71,8 @@ public class carrot : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             Debug.Log("CarrotHit");
-            //collision.gameObject.GetComponent<PlayerHP>().HP -= Damage;
+            GetComponent<Rigidbody>().isKinematic = false;
+            collision.gameObject.GetComponent<PlayerHP>().HP -= Damage;
 
         }
 
@@ -83,10 +84,7 @@ public class carrot : MonoBehaviour
 
             Particles.SetActive(false);
         }
-
-        GetComponent<Rigidbody>().isKinematic = false;
-
     }
 
 
-}
+    }
