@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.52408344, g: 0.48184904, b: 0.5152594, a: 1}
+  m_IndirectSpecularColor: {r: 0.5258515, g: 0.48321012, b: 0.5169767, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -429,8 +429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
+  _speed: 20
   _timeForNewDirection: 4
+  _RangeOffset: 3
 --- !u!95 &91412131
 Animator:
   serializedVersion: 5
@@ -797,7 +798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 9.445626, z: -14.89771}
+  m_FollowOffset: {x: 0, y: 10, z: -15}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1346,8 +1347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
+  _speed: 20
   _timeForNewDirection: 4
+  _RangeOffset: 3
 --- !u!95 &223439367
 Animator:
   serializedVersion: 5
@@ -1497,7 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 9.445626, z: -14.89771}
+  m_FollowOffset: {x: 0, y: 10, z: -15}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1996,8 +1998,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
+  _speed: 20
   _timeForNewDirection: 4
+  _RangeOffset: 3
 --- !u!95 &512000358
 Animator:
   serializedVersion: 5
@@ -2678,7 +2681,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799631228}
-  m_LocalRotation: {x: -0.43692842, y: 0.000000026807081, z: 0.0000000130214834, w: 0.89949626}
+  m_LocalRotation: {x: -0.43692842, y: -0.000000030954155, z: -0.000000015035914, w: 0.89949626}
   m_LocalPosition: {x: 0, y: 10.157, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2961,7 +2964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 9.445626, z: -14.89771}
+  m_FollowOffset: {x: 0, y: 10, z: -15}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3114,7 +3117,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066604472}
-  m_LocalRotation: {x: -0.4625117, y: -0.000000011803487, z: -0.0000000061574204, w: 0.8866132}
+  m_LocalRotation: {x: -0.4625117, y: -0.00000003736795, z: -0.00000001949341, w: 0.8866132}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3299,7 +3302,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112582146}
-  m_LocalRotation: {x: -0.43692845, y: 1.552082e-16, z: 3.0039798e-16, w: 0.89949626}
+  m_LocalRotation: {x: -0.43692845, y: -0.000000015477088, z: -0.000000007517964, w: 0.89949626}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3350,8 +3353,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
+  _speed: 20
   _timeForNewDirection: 4
+  _RangeOffset: 3
 --- !u!1 &1195345423
 GameObject:
   m_ObjectHideFlags: 0
@@ -4286,8 +4290,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
+  _speed: 20
   _timeForNewDirection: 4
+  _RangeOffset: 3
 --- !u!95 &1524315052
 Animator:
   serializedVersion: 5
@@ -4583,8 +4588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
+  _speed: 20
   _timeForNewDirection: 4
+  _RangeOffset: 3
 --- !u!95 &1525785992
 Animator:
   serializedVersion: 5
@@ -4978,8 +4984,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
+  _speed: 20
   _timeForNewDirection: 4
+  _RangeOffset: 3
 --- !u!95 &1632210205
 Animator:
   serializedVersion: 5

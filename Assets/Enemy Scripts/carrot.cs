@@ -72,7 +72,7 @@ public class carrot : MonoBehaviour
         {
             Debug.Log("CarrotHit");
             GetComponent<Rigidbody>().isKinematic = false;
-            collision.gameObject.GetComponent<PlayerHP>().HP -= Damage;
+            //collision.gameObject.GetComponent<PlayerHP>().HP -= Damage;
 
         }
 
