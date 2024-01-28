@@ -36,6 +36,8 @@ public class EggPlant : MonoBehaviour
     {
         while(true)
         {
+            yield return new WaitForSeconds(TimeAttack);
+
             int r = Random.Range(0, 100);
             if (r < AttacksProb[0])
             {
@@ -61,7 +63,6 @@ public class EggPlant : MonoBehaviour
                 GetComponentInChildren<EggplantSlam>().Slam();
             }
 
-            yield return new WaitForSeconds(TimeAttack);
 
         }
         yield return null;

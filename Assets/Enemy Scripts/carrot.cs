@@ -13,7 +13,7 @@ public class carrot : MonoBehaviour
 
     public GameObject Particles,Eyes,XEyes;
 
-    float Speed=2;
+    float Speed=3;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class carrot : MonoBehaviour
         if (attackPhase == 1)
         {
 
-            transform.position += Vector3.up * .02f;
+            transform.position += Vector3.up * .1f;
             if (transform.position.y > 30)
                 StartCoroutine(AttackMotion());
         }

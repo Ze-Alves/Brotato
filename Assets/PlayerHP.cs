@@ -8,6 +8,7 @@ public class PlayerHP : MonoBehaviour
     float maxHP;
 
     public Slider HPSlider;
+    public GameObject Lost;
     void Start()
     {
         maxHP = HP;
@@ -17,5 +18,17 @@ public class PlayerHP : MonoBehaviour
     void Update()
     {
         HPSlider.value = HP / maxHP;
+
+        if (HP <= 0)
+        {
+            Lost.SetActive(true);
+            StartCoroutine(WaitASec());
+        }
+    }
+
+    IEnumerator WaitASec()
+    {
+        yield return new WaitForSeconds(2);
+        Time.timeScale = 0;
     }
 }

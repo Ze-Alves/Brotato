@@ -15,7 +15,7 @@ public class Tickalable : MonoBehaviour
     private float _currentTickleStaggerAmount;
 
     int currentStage = 0;
-    public GameObject Mouth;
+    public GameObject Mouth,WinScreen;
 
     public List<Material> mouthMat;
     private void Awake()
@@ -51,8 +51,21 @@ public class Tickalable : MonoBehaviour
         }
         
         UpdateShader();
+
+        if (CurrentTickleHP == 0)
+        {
+            WinScreen.SetActive(true);
+
+            StartCoroutine(WaitASec());
+        }
     }
 
+
+    IEnumerator WaitASec()
+    {
+        yield return new WaitForSeconds(2);
+        Time.timeScale = 0;
+    }
     private void UpdateShader()
     {
         Debug.Log("New ratio is: " + CurrentTickleHP / MaxTickleHP);

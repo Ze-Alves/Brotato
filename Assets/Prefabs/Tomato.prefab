@@ -1699,7 +1699,7 @@ MonoBehaviour:
   area: 2
   OffsetRange: 3
   Damage: 10
-  explosion: {fileID: 0}
+  explosion: {fileID: 243891552543384826}
 --- !u!114 &7103591655786437018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2065,6 +2065,11 @@ PrefabInstance:
 --- !u!4 &122711775661155564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4977646799359860, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
+  m_PrefabInstance: {fileID: 117756119136431000}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &243891552543384826 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198194127032045410, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   m_PrefabInstance: {fileID: 117756119136431000}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &302571801031361402
