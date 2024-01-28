@@ -10,6 +10,10 @@ public class carrot : MonoBehaviour
     Vector3 Dire;
 
     public int Damage;
+
+    public GameObject Particles;
+
+    float Speed=1;
     void Start()
     {
         
@@ -27,7 +31,10 @@ public class carrot : MonoBehaviour
         }
         else if (attackPhase == 2)
         {
-            transform.position += Dire * .05f;
+
+            transform.position += Dire * Time.deltaTime*Speed/3;
+            Speed *= 1.01f;
+            
         }
         Debug.Log(GetComponent<Rigidbody>().IsSleeping());
 
@@ -51,8 +58,12 @@ public class carrot : MonoBehaviour
         Dire.Normalize();
         transform.rotation = Quaternion.LookRotation(-transform.up,- Dire);
         transform.rotation = Quaternion.LookRotation( -transform.forward,transform.up);
-        
+
         attackPhase = 2;
+
+        yield return new WaitForSeconds(.5f);
+        Particles.SetActive(true);
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -69,8 +80,11 @@ public class carrot : MonoBehaviour
         if (attackPhase == 2)
         {
             attackPhase = 0;
+            Speed = 1;
+
+            Particles.SetActive(false);
         }
-        }
+    }
 
 
     }
