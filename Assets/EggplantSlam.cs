@@ -16,20 +16,26 @@ public class EggplantSlam : MonoBehaviour
 
     public float timer;
 
+    public GameObject Particles;
+
   
     void Update()
     {
         if (SlamState == 1)
         {
+            if (AscendingCurve.Evaluate(timer) < 0)
+                Particles.SetActive(true);
             timer += Time.deltaTime;
 
             transform.position += Vector3.up * Time.deltaTime * AscendingCurve.Evaluate(timer/2)  * 50;
             Debug.Log(AscendingCurve.Evaluate(.5f));
-            if (transform.position.y > 30)
+            if (transform.position.y > 30) 
                 SlamState = 2;
         }
         else if (SlamState == 2)
         {
+            if(AscendingCurve.Evaluate(timer)<0)
+            Particles.SetActive(true);
             timer += Time.deltaTime;
 
             transform.position += Vector3.up * Time.deltaTime * AscendingCurve.Evaluate(timer/2) * 50;
@@ -39,9 +45,11 @@ public class EggplantSlam : MonoBehaviour
                 PushEnemies();
                 transform.position -= Vector3.up * transform.position.y;
                 timer = 0;
+                Particles.SetActive(false);
             }
 
         }
+
 
     }
 

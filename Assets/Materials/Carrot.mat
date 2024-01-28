@@ -70,10 +70,10 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RangeVal: 0.05
-    - _RangeVal2: 0.05
-    - _ShadowPower1: 0.5
-    - _ShadowPower2: 0.5
+    - _RangeVal: 0.29
+    - _RangeVal2: -0.45
+    - _ShadowPower1: 0.474
+    - _ShadowPower2: 0.746
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

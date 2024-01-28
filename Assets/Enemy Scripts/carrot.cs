@@ -49,8 +49,9 @@ public class carrot : MonoBehaviour
         yield return new WaitForSeconds(1);
         Dire = target.position - transform.position;
         Dire.Normalize();
-        transform.rotation = Quaternion.LookRotation(-transform.up, Dire);
-
+        transform.rotation = Quaternion.LookRotation(-transform.up,- Dire);
+        transform.rotation = Quaternion.LookRotation( -transform.forward,transform.up);
+        
         attackPhase = 2;
     }
 
