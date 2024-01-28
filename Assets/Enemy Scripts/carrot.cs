@@ -34,7 +34,9 @@ public class carrot : MonoBehaviour
 
             transform.position += Dire * Time.deltaTime*Speed/3;
             Speed *= 1.01f;
-            
+
+            if (transform.position.y < 0)
+                Reset();
         }
         Debug.Log(GetComponent<Rigidbody>().IsSleeping());
 
@@ -46,7 +48,7 @@ public class carrot : MonoBehaviour
         attackPhase = 1;
         transform.rotation = Quaternion.identity;
         GetComponent<Rigidbody>().isKinematic=true;
-
+        GetComponent<NPCRandomMovement>().enabled = false;
     }
 
     public IEnumerator AttackMotion()
@@ -71,7 +73,6 @@ public class carrot : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             Debug.Log("CarrotHit");
-            GetComponent<Rigidbody>().isKinematic = false;
             //collision.gameObject.GetComponent<PlayerHP>().HP -= Damage;
 
         }
@@ -79,12 +80,21 @@ public class carrot : MonoBehaviour
 
         if (attackPhase == 2)
         {
-            attackPhase = 0;
-            Speed = 1;
-
-            Particles.SetActive(false);
+            Reset();
         }
-    }
 
 
     }
+
+    private void Reset()
+    {
+        attackPhase = 0;
+        Speed = 1;
+
+        Particles.SetActive(false);
+        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<NPCRandomMovement>().enabled = true;
+    }
+
+
+}
