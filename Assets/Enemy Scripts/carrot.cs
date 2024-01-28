@@ -11,9 +11,10 @@ public class carrot : MonoBehaviour
 
     public int Damage;
 
-    public GameObject Particles;
+    public GameObject Particles,Eyes,XEyes;
 
-    float Speed=1;
+    float Speed=2;
+
     void Start()
     {
         
@@ -70,16 +71,17 @@ public class carrot : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 7)
-        {
-            Debug.Log("CarrotHit");
-            //collision.gameObject.GetComponent<PlayerHP>().HP -= Damage;
-
-        }
+        
 
 
         if (attackPhase == 2)
         {
+            if (collision.gameObject.layer == 7)
+            {
+                Debug.Log("CarrotHit");
+                collision.gameObject.GetComponent<PlayerHP>().HP -= Damage;
+
+            }
             Reset();
         }
 
@@ -94,13 +96,16 @@ public class carrot : MonoBehaviour
         Particles.SetActive(false);
         GetComponent<Rigidbody>().isKinematic = false;
         StartCoroutine(WakeUP());
+        XEyes.SetActive(true);
+        Eyes.SetActive(false);
     }
 
     IEnumerator WakeUP()
     {
         yield return new WaitForSeconds(2);
         GetComponent<NPCRandomMovement>().enabled = true;
-
+        XEyes.SetActive(false);
+        Eyes.SetActive(true);
     }
 
 }

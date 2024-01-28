@@ -14,6 +14,10 @@ public class Tickalable : MonoBehaviour
     public float CurrentTickleHP;
     private float _currentTickleStaggerAmount;
 
+    int currentStage = 0;
+    public GameObject Mouth;
+
+    public List<Material> mouthMat;
     private void Awake()
     {
         CurrentTickleHP = MaxTickleHP;
@@ -22,6 +26,22 @@ public class Tickalable : MonoBehaviour
 
     public void GetTickled(float tickleAmout)
     {
+
+        if(CurrentTickleHP / MaxTickleHP < .6f && currentStage==0)
+        {
+            Mouth.GetComponent<Renderer>().material = mouthMat[0];
+            currentStage++;
+        }
+        else if (CurrentTickleHP / MaxTickleHP < .3f && currentStage == 1)
+        {
+            Mouth.GetComponent<Renderer>().material = mouthMat[1];
+            currentStage++;
+        }
+        else if (CurrentTickleHP / MaxTickleHP < .1f && currentStage == 2)
+        {
+            Mouth.GetComponent<Renderer>().material = mouthMat[2];
+        }
+
         CurrentTickleHP -= tickleAmout;
         _currentTickleStaggerAmount += tickleAmout;
 

@@ -18,6 +18,8 @@ public class Corn : MonoBehaviour
     int attackPhase;
 
     public int HeightFloat;
+
+    public GameObject Eyes, XEyes;
     void Start()
     {
        foreach(CornBullet bullet in inactiveBullets)
@@ -56,6 +58,7 @@ public class Corn : MonoBehaviour
         attackPhase = 1;
 
         GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<NPCRandomMovement>().enabled = false;
         Debug.Log("RAU");
     }
 
@@ -70,7 +73,7 @@ public class Corn : MonoBehaviour
             inactiveBullets[0].gameObject.SetActive(true);
             Vector3 offset = new Vector3(Random.Range(-.1f, .1f), Random.Range(-.1f, .1f), Random.Range(-.1f, .1f));
             
-            inactiveBullets[0].Direction = (transform.up+offset*offsetRange).normalized;
+            inactiveBullets[0].Direction = (transform.up*1.1f+offset*offsetRange).normalized;
             activeBullets.Add(inactiveBullets[0]);
             inactiveBullets.Remove(inactiveBullets[0]);
 
@@ -79,9 +82,22 @@ public class Corn : MonoBehaviour
         }
         active = false;
         attackPhase = 0;
+
+        StartCoroutine(WakeUP());
+        yield return null;
+    }
+
+    IEnumerator WakeUP()
+    {
         transform.rotation = Quaternion.identity;
         GetComponent<Rigidbody>().isKinematic = false;
-        yield return null;
+        XEyes.SetActive(true);
+        Eyes.SetActive(false);
+        yield return new WaitForSeconds(2);
+        GetComponent<NPCRandomMovement>().enabled = true;
+
+        XEyes.SetActive(false);
+        Eyes.SetActive(true);
     }
 
 }

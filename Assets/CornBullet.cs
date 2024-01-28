@@ -32,7 +32,7 @@ public class CornBullet : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.layer == LayerMask.GetMask("Player"))
+        if (collision.gameObject.layer ==7)
         {
             Debug.Log("CornHit");
             collision.gameObject.GetComponent<PlayerHP>().HP -= Damage;

@@ -23,8 +23,8 @@ public class EggplantSlam : MonoBehaviour
     {
         if (SlamState == 1)
         {
-            if (AscendingCurve.Evaluate(timer) < 0)
-                Particles.SetActive(true);
+            //if (AscendingCurve.Evaluate(timer) < 0)
+            //    Particles.SetActive(true);
             timer += Time.deltaTime;
 
             transform.position += Vector3.up * Time.deltaTime * AscendingCurve.Evaluate(timer/2)  * 50;
@@ -34,18 +34,18 @@ public class EggplantSlam : MonoBehaviour
         }
         else if (SlamState == 2)
         {
-            if(AscendingCurve.Evaluate(timer)<0)
-            Particles.SetActive(true);
+            //if(AscendingCurve.Evaluate(timer)<0)
+            //Particles.SetActive(true);
             timer += Time.deltaTime;
 
             transform.position += Vector3.up * Time.deltaTime * AscendingCurve.Evaluate(timer/2) * 50;
             if (transform.position.y < 0)
-            {
+            {   
                 SlamState = 0;
                 PushEnemies();
                 transform.position -= Vector3.up * transform.position.y;
                 timer = 0;
-                Particles.SetActive(false);
+                //Particles.SetActive(false);
             }
 
         }
@@ -68,8 +68,14 @@ public class EggplantSlam : MonoBehaviour
             if (rb != null)
             {
                 Debug.Log("Pushing: " + collider.name);
-                rb.AddForce(Vector3.up * _slamForce/10, ForceMode.Impulse);
-                rb.AddExplosionForce(_slamForce, transform.position, _slamRadius);
+                Vector3 Dir = collider.transform.position - transform.position;
+                Dir.y = 10;
+                Dir.Normalize();
+                rb.AddForce(Dir * _slamForce, ForceMode.Impulse);
+                if (rb.gameObject.layer == 7)
+                {
+                    rb.gameObject.GetComponent<PlayerHP>().HP -= damage;
+                }
             }
         }
     }
