@@ -93,8 +93,14 @@ public class carrot : MonoBehaviour
 
         Particles.SetActive(false);
         GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<NPCRandomMovement>().enabled = true;
+        StartCoroutine(WakeUP());
     }
 
+    IEnumerator WakeUP()
+    {
+        yield return new WaitForSeconds(2);
+        GetComponent<NPCRandomMovement>().enabled = true;
+
+    }
 
 }
