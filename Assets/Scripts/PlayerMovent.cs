@@ -21,6 +21,7 @@ public class PlayerMovent : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 moveDirection;
     private Dash _dash;
+    public bool DisableMovement = false;
 
     private void Awake()
     {
@@ -34,6 +35,11 @@ public class PlayerMovent : MonoBehaviour
 
     private void Update()
     {
+        if (DisableMovement)
+        {
+            return;
+        }
+
         float xMov = Input.GetAxis("Horizontal");
         float zMov = Input.GetAxis("Vertical");
 
@@ -92,7 +98,8 @@ public class PlayerMovent : MonoBehaviour
 
     public void MicroAdjustment(Vector3 direction)
     {
-        _rb.DOMove(transform.position + direction * _microAdjustmentDistance, _microAdjustmentTime);
+        _dash.DoDash(this, _microAdjustmentDistance, _microAdjustmentTime);
+        //_rb.DOMove(transform.position + direction * _microAdjustmentDistance, _microAdjustmentTime);
     }
 
     private void OnDrawGizmos()
