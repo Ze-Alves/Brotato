@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 4de6f6a8be48ddb488cad80a43d0fa1c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.52408344, g: 0.48184904, b: 0.5152594, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -245,6 +245,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2294925010791931671, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 2304199191427463927, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -44.464275
@@ -425,8 +429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _timeForNewDirection: 2
+  _speed: 4
+  _timeForNewDirection: 4
 --- !u!95 &91412131
 Animator:
   serializedVersion: 5
@@ -554,7 +558,7 @@ MonoBehaviour:
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
-    m_InvertInput: 0
+    m_InvertInput: 1
     m_MinValue: 0
     m_MaxValue: 1
     m_Wrap: 0
@@ -599,14 +603,14 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_BindingMode: 5
-  m_SplineCurvature: 0.2
+  m_SplineCurvature: 0.5
   m_Orbits:
+  - m_Height: 15
+    m_Radius: 10
   - m_Height: 10
     m_Radius: 15
-  - m_Height: 10
-    m_Radius: 15
-  - m_Height: 10
-    m_Radius: 15
+  - m_Height: 0
+    m_Radius: 8
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 764318496}
@@ -793,7 +797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 10, z: -15}
+  m_FollowOffset: {x: 0, y: 9.445626, z: -14.89771}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1158,6 +1162,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2294925010791931671, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 2304199191427463927, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -44.464275
@@ -1338,8 +1346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _timeForNewDirection: 2
+  _speed: 4
+  _timeForNewDirection: 4
 --- !u!95 &223439367
 Animator:
   serializedVersion: 5
@@ -1489,7 +1497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 10, z: -15}
+  m_FollowOffset: {x: 0, y: 9.445626, z: -14.89771}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1804,6 +1812,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2294925010791931671, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 2304199191427463927, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -44.464275
@@ -1984,8 +1996,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _timeForNewDirection: 2
+  _speed: 4
+  _timeForNewDirection: 4
 --- !u!95 &512000358
 Animator:
   serializedVersion: 5
@@ -2666,7 +2678,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799631228}
-  m_LocalRotation: {x: 0.21290304, y: 0.000000016811585, z: -0.0000000036632228, w: 0.9770733}
+  m_LocalRotation: {x: -0.43692842, y: 0.000000026807081, z: 0.0000000130214834, w: 0.89949626}
   m_LocalPosition: {x: 0, y: 10.157, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2949,7 +2961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 10, z: -15}
+  m_FollowOffset: {x: 0, y: 9.445626, z: -14.89771}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3102,7 +3114,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066604472}
-  m_LocalRotation: {x: 0.18483132, y: 0.000000016904774, z: -0.0000000031793106, w: 0.98277026}
+  m_LocalRotation: {x: -0.4625117, y: -0.000000011803487, z: -0.0000000061574204, w: 0.8866132}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3287,7 +3299,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112582146}
-  m_LocalRotation: {x: 0.21290304, y: 0.000000008405328, z: -0.0000000018315099, w: 0.9770734}
+  m_LocalRotation: {x: -0.43692845, y: 1.552082e-16, z: 3.0039798e-16, w: 0.89949626}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3338,8 +3350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _timeForNewDirection: 2
+  _speed: 4
+  _timeForNewDirection: 4
 --- !u!1 &1195345423
 GameObject:
   m_ObjectHideFlags: 0
@@ -3723,8 +3735,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 435757685}
-  _zDistance: -4
-  _yDistance: 0
+  _zDistance: 4
+  _yDistance: 1
 --- !u!4 &1312839951
 Transform:
   m_ObjectHideFlags: 0
@@ -3733,7 +3745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312839949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1600001, z: 2}
+  m_LocalPosition: {x: 0, y: 29.38, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4090,6 +4102,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2294925010791931671, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 2304199191427463927, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -44.464275
@@ -4270,8 +4286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _timeForNewDirection: 2
+  _speed: 4
+  _timeForNewDirection: 4
 --- !u!95 &1524315052
 Animator:
   serializedVersion: 5
@@ -4382,6 +4398,10 @@ PrefabInstance:
     - target: {fileID: 1752902314752980651, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2294925010791931671, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 2304199191427463927, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4563,8 +4583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _timeForNewDirection: 2
+  _speed: 4
+  _timeForNewDirection: 4
 --- !u!95 &1525785992
 Animator:
   serializedVersion: 5
@@ -4774,6 +4794,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2294925010791931671, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 2304199191427463927, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -44.464275
@@ -4954,8 +4978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ddf6d74d8da143bec84a451667c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _timeForNewDirection: 2
+  _speed: 4
+  _timeForNewDirection: 4
 --- !u!95 &1632210205
 Animator:
   serializedVersion: 5
@@ -5889,6 +5913,10 @@ PrefabInstance:
     - target: {fileID: 1752902314752980651, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2294925010791931671, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 2304199191427463927, guid: 272bb8877984d4e4b95635c5d94f8abb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
