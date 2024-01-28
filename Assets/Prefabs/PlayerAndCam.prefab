@@ -71,7 +71,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504815026340784122}
-  m_LocalRotation: {x: -0.43692845, y: 1.552082e-16, z: 3.0039798e-16, w: 0.89949626}
+  m_LocalRotation: {x: -0.43692845, y: -0.000000015543602, z: -0.0000000075502715, w: 0.8994963}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 9.445626, z: -14.89771}
+  m_FollowOffset: {x: 0, y: 7.886569, z: -14.36007}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 9.445626, z: -14.89771}
+  m_FollowOffset: {x: 0, y: 7.886569, z: -14.36007}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 9.445626, z: -14.89771}
+  m_FollowOffset: {x: 0, y: 7.886569, z: -14.36007}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -736,7 +736,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504815027452237888}
-  m_LocalRotation: {x: -0.4625117, y: -0.000000011803487, z: -0.0000000061574204, w: 0.8866132}
+  m_LocalRotation: {x: -0.46251172, y: -4.0106778e-29, z: -2.4679068e-30, w: 0.88661325}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -971,6 +971,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8954292288008451374, guid: a1896e4591edace4986c4f017c3e2122, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954292288008451806, guid: a1896e4591edace4986c4f017c3e2122, type: 3}
+      propertyPath: _tickleRange
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954292288008451806, guid: a1896e4591edace4986c4f017c3e2122, type: 3}
+      propertyPath: _autoLockRange
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954292288008451806, guid: a1896e4591edace4986c4f017c3e2122, type: 3}
+      propertyPath: _microAdjustmentOnAttack
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

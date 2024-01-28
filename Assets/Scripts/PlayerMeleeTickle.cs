@@ -9,11 +9,13 @@ public class PlayerMeleeTickle : MonoBehaviour
     public float _tickleAmount;
     [SerializeField] private float _tickleRange;
     [SerializeField] private float _attackCooldown = 1f;
+    [SerializeField] private bool _microAdjustmentOnAttack = true;
 
     [Header("Refs")]
     [SerializeField] private GameObject _tickleFX;
     [SerializeField] private string _tickleParam;
     [SerializeField] private Transform _boss;
+    [SerializeField] private float _autoLockRange = 4f;
     private Animator _anim;
     private float _timeSinceLastAttack = 0;
     private PlayerMovent _playerMovement;
@@ -28,8 +30,22 @@ public class PlayerMeleeTickle : MonoBehaviour
         _timeSinceLastAttack += Time.deltaTime;
         if (Input.GetMouseButton(0) && _timeSinceLastAttack >= _attackCooldown)
         {
+            TryToAutoLock();
             _timeSinceLastAttack = 0;
             _anim.SetTrigger(_tickleParam);
+        }
+    }
+
+    private void TryToAutoLock()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _autoLockRange);
+        foreach (var collider in colliders)
+        {
+            if (collider.transform == _boss)
+            {
+                _playerMovement.DisableMovement = true;
+                transform.LookAt(_boss);
+            }
         }
     }
 
@@ -45,7 +61,8 @@ public class PlayerMeleeTickle : MonoBehaviour
                 ShowFeedback(hit);
             }
         }
-        _playerMovement.MicroAdjustment(transform.forward);
+        _playerMovement.DisableMovement = false;
+        if(_microAdjustmentOnAttack)_playerMovement.MicroAdjustment(transform.forward);
     }
 
     private void ShowFeedback(RaycastHit hit)

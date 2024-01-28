@@ -105,7 +105,7 @@ MonoBehaviour:
   _chaseSpeed: 45
   _tickleValuePerSecond: 1
   _tickleInterval: 1
-  _maxTickleDistance: 4
+  _maxTickleDistance: 6
   _aliveTime: 3
   _state: 0
   _sleepParticles: {fileID: 5084599002722836791}

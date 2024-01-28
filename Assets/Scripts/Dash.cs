@@ -42,4 +42,11 @@ public class Dash : MonoBehaviour
         _rb.DOMove(transform.position + transform.forward * _dashDistance, _dashDuration)
             .OnComplete(() => disableMe.enabled = true);
     }
+
+    public void DoDash(MonoBehaviour disableMe, float dashDistance, float dashDuration)
+    {
+        disableMe.enabled = false;
+        _rb.DOMove(transform.position + transform.forward * dashDistance, dashDuration)
+            .OnComplete(() => disableMe.enabled = true);
+    }
 }
