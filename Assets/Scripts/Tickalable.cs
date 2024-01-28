@@ -35,6 +35,7 @@ public class Tickalable : MonoBehaviour
 
     private void UpdateShader()
     {
+        Debug.Log("New ratio is: " + CurrentTickleHP / MaxTickleHP);
         _tickleSlider.value =1- CurrentTickleHP / MaxTickleHP;
         _meshRenderer.materials[0].SetFloat("_PeelAmount", 1- CurrentTickleHP / MaxTickleHP);
     }

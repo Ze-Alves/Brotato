@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToActivate: 1
-  _chaseSpeed: 30
+  _chaseSpeed: 45
   _tickleValuePerSecond: 1
   _tickleInterval: 1
   _maxTickleDistance: 4
